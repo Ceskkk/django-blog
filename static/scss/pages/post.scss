@@ -1,0 +1,18 @@
+#post {
+    > #post-content {
+        gap: var(--spacing);
+        > #post-content-text {
+            flex: 1 1 50%;
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) / 2);
+        }
+        > #post-content-image {
+            flex: 1 1 50%;
+            > img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}

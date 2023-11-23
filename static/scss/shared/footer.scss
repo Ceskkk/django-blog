@@ -1,0 +1,21 @@
+footer {
+    display: flex;
+    gap: calc(var(--spacing) * 2);
+
+    background-color: $black;
+    color: $white;
+
+    padding: calc(var(--spacing) * 2) 0;
+    > #contact-form {
+        flex: 1 1 50%;
+        flex-direction: column;
+        gap: calc(var(--spacing));
+        > form {
+            flex-direction: column;
+        }
+    }
+    > #contact-us {
+        flex: 1 1 50%;
+        flex-direction: column;
+    }
+}

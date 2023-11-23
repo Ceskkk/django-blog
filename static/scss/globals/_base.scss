@@ -1,0 +1,172 @@
+#wpadminbar {
+  display: none !important;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2);
+
+    padding:calc(var(--spacing) * 2) 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 150rem;
+
+    padding: 0 var(--spacing);
+    margin:0 auto;
+}
+
+section {
+    display: flex;
+    > h2 {
+        width: 100%;
+    }
+}
+
+h1 {
+    @include text-h1;
+}
+
+h2 {
+    @include text-h2;
+}
+
+h3 {
+    @include text-h3;
+}
+
+p {
+    @include text-p;
+}
+
+
+form {
+    display: flex;
+    gap: var(--spacing);
+    > input:not([type="submit"]) {
+        @include text-p;
+
+        border-bottom: 1px solid $main-color;
+
+        padding: calc(var(--spacing) / 4) 0;
+
+        @include placeholder {
+            opacity: 0.6;
+        }
+    }
+    > input[type="submit"], button[type="submit"] {
+        cursor: pointer;
+
+        @include text-p;
+
+        align-self: flex-start;
+
+        color: $white;
+        background-color: $sec-color-dark;
+        
+        border-radius: var(--spacing);
+
+        padding: calc(var(--spacing) / 4) var(--spacing);
+
+        transition: background-color 0.3s ;
+        &:hover {
+            background-color: $sec-color;
+        }
+    }
+    > select {
+        @include text-p;
+
+        border: 1px solid $main-color;
+        padding: calc(var(--spacing) / 4);
+    }
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing);
+
+    > .card {
+        flex: 0 0 calc(100% / 3 - var(--spacing) * 3 / 2);
+
+        border-radius: var(--spacing);
+
+        overflow: hidden;
+
+        background-color: $main-color;
+
+        transition: box-shadow 0.3s;
+
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        > a{
+            > .card-image {
+                width: 100%;
+                height: 200px;
+
+                overflow: hidden;
+                > img {
+                    width: 100%;
+                    height: auto;
+                    max-height: unset;
+                }
+            }
+            > .card-text {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--spacing) / 2);
+
+                padding: var(--spacing) var(--spacing) calc(var(--spacing) * 2);
+            }
+        }
+    }
+}
+
+#paginator {
+    flex: 0 0 100%;
+
+    > ul {
+        display: flex;
+        gap: calc(var(--spacing) / 2);
+        > li {
+            > * {
+                display: flex;
+                justify-content: center;
+
+                border: 1px solid $grey;
+                border-radius: calc(var(--spacing) / 4);
+
+                padding: calc(var(--spacing) / 4) calc(var(--spacing) / 2);
+            }
+            > a {
+                @include text-small;
+
+                transition: color, background-color 0.3s;
+                &:hover {
+                    font-weight: 600;
+
+                    color: $white;
+                    background-color: $sec-color-dark;
+                }
+            }
+            > span {
+                @include text-small;
+                font-weight: 600;
+
+                color: $white;
+                background-color: $grey;
+            }
+        }
+    }
+}

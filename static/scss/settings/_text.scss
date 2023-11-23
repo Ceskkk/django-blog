@@ -1,0 +1,29 @@
+$text-h1: 4rem;
+$text-h2: 3.2rem;
+$text-h3: 2.6rem;
+$text-p: 1.8rem;
+$text-small: 1.4rem;
+
+@mixin text-h1 {
+    font-size: $text-h1;
+}
+@mixin text-h2 {
+    font-size: $text-h2;
+}
+@mixin text-h3 {
+    font-size: $text-h3;
+}
+@mixin text-p {
+    font-size: $text-p;
+}
+@mixin text-small {
+    font-size: $text-small;
+}
+
+@mixin placeholder {
+    &::placeholder               {@content};
+    &::-webkit-input-placeholder {@content};
+    &:-moz-placeholder           {@content};
+    &::-moz-placeholder          {@content};
+    &:-ms-input-placeholder      {@content}; 
+}

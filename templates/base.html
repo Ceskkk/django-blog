@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'build/css/frontend.min.css' %}">
+        <title>{% block title %}{% endblock title %}</title>
+    </head>
+    <body>
+        {% include 'shared/header.html' %}
+        {% block content %}{% endblock content %}
+        {% include 'shared/footer.html' %}
+        <script src="{% static 'build/js/app.min.js' %}"></script>
+    </body>
+</html>

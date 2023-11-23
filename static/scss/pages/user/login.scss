@@ -1,0 +1,40 @@
+#login {
+    > #login-title {
+        justify-content: center;
+        text-align: center;
+    }
+    > #login-form {
+        justify-content: center;
+        > form {
+            width: 600px;
+            max-width: 100%;
+            
+            flex-direction: column;
+            > input[type="submit"] {
+                align-self: center;
+            }
+            > span {
+                @include text-small;
+                align-self: center;
+            }
+            > a {
+                @include text-p;
+
+                align-self: center;
+
+                background-color: $main-color-dark;
+                color: #fff;
+                
+                border-radius: var(--spacing);
+
+                padding: calc(var(--spacing)/4) var(--spacing);
+
+                transition: background-color .3s;
+
+                &:hover {
+                    background-color: $main-color;
+                }
+            }
+        }
+    }
+}

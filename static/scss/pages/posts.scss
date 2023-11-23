@@ -1,0 +1,20 @@
+
+#posts {
+    #category-list {
+        margin-left: auto;
+        > ul {
+            display: flex;
+            gap: var(--spacing);
+            > li {
+                > a {
+                    @include text-p;
+
+                    transition: color 0.3s;
+                    &:hover {
+                        color: $sec-color-dark;
+                    }
+                }
+            }
+        }
+    }
+}

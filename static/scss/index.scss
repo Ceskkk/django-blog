@@ -1,0 +1,17 @@
+// Fonts and variables
+@import "settings/_settings";
+
+// Core
+@import "globals/base";
+@import "globals/reset";
+
+// Shared
+@import "shared/header";
+@import "shared/footer";
+
+// Pages
+@import "pages/post";
+@import "pages/posts";
+@import "pages/home";
+@import "pages/user/login";
+@import "pages/user/register";

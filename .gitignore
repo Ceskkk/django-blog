@@ -1,0 +1,13 @@
+# Node
+package-lock.json
+node_modules
+
+# Django
+__pycache__
+media
+
+# Build
+static/build
+
+# Environment
+.env

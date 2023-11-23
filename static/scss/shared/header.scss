@@ -1,0 +1,23 @@
+header {
+    padding: var(--spacing);
+
+    background-color: $main-color-dark;
+    > nav {
+        > ul {
+            display: flex;
+            gap: var(--spacing);
+            > li {
+                > a {
+                    font-size: 1.8rem;
+                    
+                    color: $white;
+
+                    transition: color 0.3s;
+                    &:hover {
+                        color: $sec-color-dark;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load  static %}
+
+{% block content %}
+
+<main id="login">
+    <section id="login-title" class="container">
+        <h1>Login</h1>
+    </section>
+    <section id="login-form" class="container">
+        <form>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <input type="submit" value="Login" />
+            <span>or</span>
+            <a href="{% url 'users_app:register' %}">Register</a>
+        </form>
+    </section>
+</main>
+
+{% endblock content %}

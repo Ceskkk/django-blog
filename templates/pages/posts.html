@@ -1,0 +1,61 @@
+<!-- head para PC -->
+{% extends "base.html" %}
+{% load  static %}
+
+{% block content %}
+
+<main id="posts">
+    <section id="searchers" class="container">
+        <div id="post-searcher">
+            <form method="GET">{% csrf_token %}
+                <input type="text" name="kword" placeholder="Search" />
+                <input type="submit" value="Search" />
+            </form>
+        </div>
+        <div id="category-list">
+            <ul>
+                {% for cat in categories %}
+                    <li>
+                        <a href="?cat={{ cat.shortname }}">{{ cat.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <section id="post-list" class="card-container container">
+        {% for post in posts %}
+            <article class="card">
+                <a href="{% url 'post_app:post' post.id %}">
+                    <div class="card-image">
+                        <img src="{{ post.image.url }}" />
+                    </div>
+                    <div class="card-text">
+                        <h3>{{ post.title | truncatechars:40 }}</h3>
+                        <p>{{ post.summary | truncatechars:100  }}</p>
+                    </div>
+                </a>
+            </article>
+        {% empty %}
+            <h4>There are no results</h4>
+        {% endfor %}
+        <nav id="paginator">
+            <ul>
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}">Prev</a></li>
+                {% endif %}
+                {% for page in paginator.page_range %}
+                    {% if page == page_obj.number %}
+                        <li><span>{{ page }}</span></li>
+                    {% else %}
+                        <li><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{page_obj.next_page_number}}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </section>
+</main>
+
+{% endblock content %}

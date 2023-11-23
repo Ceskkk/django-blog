@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load  static %}
+
+{% block content %}
+
+
+<main id="homepage">
+    <section id="cover">
+        <img src="{{ cover.image.url }}" />
+        <a href="{% url 'post_app:post' cover.id %}">
+            <div id="cover-text">
+                <h3>{{ cover.title }}</h3>
+                <p>{{ cover.summary }}</p>
+            </div>
+        </a>
+    </section>
+    <section id="posts-home" class="card-container container">
+        <h2>Featured</h2>
+        {% for post in posts_home %}
+            <article class="card">
+                <a href="{% url 'post_app:post' post.id %}">
+                    <div class="card-image">
+                        <img src="{{ post.image.url }}" />
+                    </div>
+                    <div class="card-text">
+                        <h3>{{ post.title | truncatechars:40 }}</h3>
+                        <p>{{ post.summary | truncatechars:100  }}</p>
+                    </div>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+    <section id="last-posts" class="card-container container">
+        <h2>Last posts</h2>
+        {% for post in last_posts %}
+            <article class="card">
+                <a href="{% url 'post_app:post' post.id %}">
+                    <div class="card-image">
+                        <img src="{{ post.image.url }}" />
+                    </div>
+                    <div class="card-text">
+                        <h3>{{ post.title | truncatechars:40 }}</h3>
+                        <p>{{ post.summary | truncatechars:100  }}</p>
+                    </div>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+    <section id="banner" class="container">
+        <div>
+            <h2>{{ home.about_title }}</h2>
+            <p>{{ home.about_text }}</p>
+            <form method="POST" action="{% url 'home_app:subscribe' %}">{% csrf_token %}
+                {{ form.email }}
+                <button type="submit">Suscribe</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+
+{% endblock content %}
