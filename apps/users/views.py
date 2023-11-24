@@ -13,7 +13,6 @@ from .forms import (
 
 
 class UserRegisterView(FormView):
-    # TODO: No funciona el register pero cuando ponemos {{form.password}} en vez de {{form.password1}} si que va
     template_name = 'pages/user/register.html'
     form_class = UserRegisterForm
     success_url = reverse_lazy('users_app:login')
@@ -21,7 +20,7 @@ class UserRegisterView(FormView):
     def form_valid(self, form):
         User.objects.create_user(
             form.cleaned_data['email'],
-            form.cleaned_data['password1'],
+            form.cleaned_data['password'],
             name=form.cleaned_data['name'],
             job=form.cleaned_data['job'],
             gender=form.cleaned_data['gender'],
