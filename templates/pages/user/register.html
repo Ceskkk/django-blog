@@ -16,6 +16,15 @@
             {{ form.birthdate }}
             {{ form.password }}
             {{ form.password2 }}
+            {% for e in form.password2.errors %}
+                <p class="form-error">Passwords does not match</p>
+            {% endfor %}
+            <p></p>
+            {% comment %}
+            {% if form.errors %}
+                {{ form.errors }}
+            {% endif %}
+            {% endcomment %}
             <input type="submit" value="Register" />
             <span>or</span>
             <a href="{% url 'users_app:login' %}">Login</a>

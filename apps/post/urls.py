@@ -12,7 +12,7 @@ urlpatterns = [
         name="posts"
     ),
     path(
-        'posts/<pk>/',
+        'posts/<slug>/',
         views.PostView.as_view(),
         name="post"
     ),

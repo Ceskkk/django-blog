@@ -2,21 +2,29 @@
   <nav>
       <ul>
           <li>
-              <a href="/">Home</a>
+              <a href="{% url 'home_app:index' %}">Home</a>
           </li>
           <li>
-              <a href="/posts">Blog</a>
+              <a href="{% url 'post_app:posts' %}">Blog</a>
           </li>
       </ul>
   </nav>
   <nav id="nav-right">
-    <ul>
-        <li>
-            <a href="/user/login">Login</a>
-        </li>
-        <li>
-          <a href="/user/register">Register</a>
-      </li>
-    </ul>
+    {% if user.is_anonymous %}
+        <ul>
+            <li>
+                <a href="{% url 'users_app:login' %}">Login</a>
+            </li>
+            <li>
+                <a href="{% url 'users_app:register' %}">Register</a>
+            </li>
+        </ul>
+    {% else %} 
+        <ul>
+            <li>
+                <a href="{% url 'favorites_app:profile' %}">Profile</a>
+            </li>
+        </ul>
+    {% endif %}
 </nav>
 </header>

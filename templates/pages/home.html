@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% load  static %}
 
+{% block title %} {{ home.title }} {% endblock title %}
+{% block description %}{{ home.description }}{% endblock description %}
+
 {% block content %}
 
 
 <main id="homepage">
     <section id="cover">
         <img src="{{ cover.image.url }}" />
-        <a href="{% url 'post_app:post' cover.id %}">
+        <a href="{% url 'post_app:post' cover.slug %}">
             <div id="cover-text">
                 <h3>{{ cover.title }}</h3>
                 <p>{{ cover.summary }}</p>
@@ -18,7 +21,7 @@
         <h2>Featured</h2>
         {% for post in posts_home %}
             <article class="card">
-                <a href="{% url 'post_app:post' post.id %}">
+                <a href="{% url 'post_app:post' post.slug %}">
                     <div class="card-image">
                         <img src="{{ post.image.url }}" />
                     </div>
@@ -34,7 +37,7 @@
         <h2>Last posts</h2>
         {% for post in last_posts %}
             <article class="card">
-                <a href="{% url 'post_app:post' post.id %}">
+                <a href="{% url 'post_app:post' post.slug %}">
                     <div class="card-image">
                         <img src="{{ post.image.url }}" />
                     </div>

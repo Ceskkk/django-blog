@@ -23,9 +23,9 @@ class HomeView(TemplateView):
 
 class SubscriberView(CreateView):
     form_class = SubscriberForm
-    success_url = '/'
+    success_url = reverse_lazy('home_app:index')
 
 
 class ContactView(CreateView):
     form_class = ContactForm
-    success_url = '/'
+    success_url = reverse_lazy('home_app:index')

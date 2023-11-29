@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load  static %}
+
+{% block content %}
+
+<main id="profile">
+    <section id="profile-info" class="container">
+        <h2>User info</h2>
+        <div class="profile-info-item">
+            <h3>Name</h3>
+            <p>{{ user.name }}</p>
+        </div>
+        <div class="profile-info-item">
+            <h3>Email</h3>
+            <p>{{ user.email }}</p>
+        </div>
+        <div class="profile-info-item">
+            <h3>Job</h3>
+            <p>{{ user.job }}</p>
+        </div>
+        <div class="profile-info-item">
+            <h3>Gender</h3>
+            <p>{{ user.gender }}</p>
+        </div>
+        <div class="profile-info-item">
+            <h3>Birthdate</h3>
+            <p>{{ user.birthdate }}</p>
+        </div>
+        <a href="{% url 'users_app:logout' %}">Logout</a>
+    </section>
+    <section id="profile-favorites" class="card-container container">
+        <h2>Favorite posts</h2>
+        {% for post in user_posts %}
+            <article class="card">
+                <a href="{% url 'post_app:post' post.post.slug %}">
+                    <div class="card-image">
+                        <img src="{{ post.post.image.url }}" />
+                    </div>
+                    <div class="card-text">
+                        <h3>{{ post.post.title | truncatechars:40 }}</h3>
+                        <p>{{ post.post.summary | truncatechars:100  }}</p>
+                    </div>
+                </a>
+                <form method="POST" action="{% url 'favorites_app:remove-post' post.id %}">{% csrf_token %}
+                    <button>Remove</button>
+                </form>
+            </article>
+        {% endfor %}
+    </section>
+</main>
+
+{% endblock content %}

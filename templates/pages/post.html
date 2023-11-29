@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load  static %}
 
+{% block title %} {{ post.title }} {% endblock title %}
+{% block description %}{{ post.summary }}{% endblock description %}
+
 {% block content %}
 
 <main id="post">
@@ -11,6 +14,9 @@
         </div>
         <div id="post-content-image">
             <img src="{{ object.image.url }}" />
+            <form method="POST" action="{% url 'favorites_app:add-post' post.id %}">{% csrf_token %}
+                <button>Add to favorites</button>
+            </form>
         </div>
     </section>
 </main>

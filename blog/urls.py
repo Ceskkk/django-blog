@@ -18,12 +18,30 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from apps.home.sitemap import PostSitemap, Sitemap
 
-
-urlpatterns = [
+urlpatterns_main = [
     path('admin/', admin.site.urls),
     re_path('', include('apps.users.urls')),
     re_path('', include('apps.home.urls')),
     re_path('', include('apps.post.urls')),
+    re_path('', include('apps.favorites.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+sitemaps = {
+    'site': Sitemap(
+        [
+            'home_app:index'
+        ]
+    ),
+    'posts': PostSitemap,
+}
+
+urlpatterns_sitemap = [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap')
+]
+
+urlpatterns = urlpatterns_main + urlpatterns_sitemap

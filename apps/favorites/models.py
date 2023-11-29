@@ -2,6 +2,7 @@ from django.db import models
 from model_utils.models import TimeStampedModel
 from django.conf import settings
 from apps.post.models import Post
+from .managers import FavoritesManager
 
 
 class Favorites(TimeStampedModel):
@@ -15,6 +16,8 @@ class Favorites(TimeStampedModel):
         related_name='post_favorites',
         on_delete=models.CASCADE
     )
+
+    objects = FavoritesManager()
 
     class Meta:
         unique_together = ('user', 'post')

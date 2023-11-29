@@ -8,9 +8,9 @@
         <h1>Login</h1>
     </section>
     <section id="login-form" class="container">
-        <form>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+            {{ form.email }}
+            {{ form.password }}
             <input type="submit" value="Login" />
             <span>or</span>
             <a href="{% url 'users_app:register' %}">Register</a>

@@ -1,0 +1,37 @@
+#profile {
+    > #profile-info {
+        position: relative;
+
+        flex-wrap: wrap;
+        row-gap: var(--spacing);
+        column-gap: calc(var(--spacing) * 2);
+        justify-content: space-between;
+
+        background-color: $main-color;
+
+        border-radius: var(--spacing);
+
+        padding: var(--spacing);
+        > h2 {
+            width: 100%;
+        }
+        > a {
+            position: absolute;
+            top: var(--spacing);
+            right: var(--spacing);
+            
+            @include text-p;
+            background-color: $warning-dark;
+            color: $white;
+
+            border-radius: var(--spacing);
+
+            padding: calc(var(--spacing) / 4) calc(var(--spacing) / 2);
+
+            transition: background-color 0.3s;
+            &:hover {
+                background-color: $warning;
+            }
+        }
+    }
+}
